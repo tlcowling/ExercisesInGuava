@@ -58,4 +58,13 @@ public class RangeTests {
 
         assertThat(range.containsAll(someTelephoneNumbers), is(true));
     }
+    
+    @Test
+    public void shouldCreateRangeForGiveTelephoneNumbers() {
+        ArrayList<TelephoneNumber> numbers = Lists.newArrayList(startNumber, firstTelephoneNumberWithinRange, secondTelephoneNumberWithinRange, endNumber);
+        Range<TelephoneNumber> range = Range.encloseAll(numbers);
+        
+        assertThat(range.lowerEndpoint(), equalTo(startNumber));
+        assertThat(range.upperEndpoint(), equalTo(endNumber));
+    }
 }
