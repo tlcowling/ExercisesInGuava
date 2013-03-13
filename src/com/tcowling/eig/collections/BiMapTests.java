@@ -27,7 +27,7 @@ public class BiMapTests {
     }
 
     @Test
-    public void shouldNotAllowSecondKeyEntry() {
+    public void shouldNullifyOriginalQuantityAfterForcePut() {
         bimap.put(1, "one");
         bimap.put(2, "two");
         bimap.put(10, "ten");
@@ -47,6 +47,8 @@ public class BiMapTests {
         bimap.put(2, "two");
         bimap.put(10, "ten");
 
+        BiMap<String, Integer> inversedBiMap = bimap.inverse();
 
+        assertThat(inversedBiMap.get("one"), is(1));
     }
 }
